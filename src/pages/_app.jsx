@@ -1,4 +1,6 @@
 import { ThemeProvider } from 'styled-components'
+import { ApolloProvider } from '@apollo/client'
+import { client } from '../apollo-client'
 
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
@@ -32,11 +34,13 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <GlobalStyle />
-      <ThemeProvider theme={theme}>
-        <Page>
-          <Component {...pageProps} />
-        </Page>
-      </ThemeProvider>
+      <ApolloProvider client={client}>
+        <ThemeProvider theme={theme}>
+          <Page>
+            <Component {...pageProps} />
+          </Page>
+        </ThemeProvider>
+      </ApolloProvider>
     </>
   )
 }
