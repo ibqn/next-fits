@@ -10,7 +10,7 @@ import '../components/styles/nprogress.css'
 
 import theme from '../theme'
 
-import GlobalStyles from '../components/global-styles'
+import GlobalStyles from '../components/styles/global-styles'
 import Page from '../components/page'
 
 export default function App({ Component, pageProps }) {

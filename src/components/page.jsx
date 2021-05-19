@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
 import Meta from '../components/meta'
 import Header from '../components/header'
@@ -10,11 +11,15 @@ const InnerStyles = styled.div`
 `
 
 const Page = ({ children }) => (
-  <div>
+  <>
     <Meta />
     <Header />
     <InnerStyles>{children}</InnerStyles>
-  </div>
+  </>
 )
+
+Page.propTypes = {
+  children: PropTypes.node.isRequired,
+}
 
 export default Page
