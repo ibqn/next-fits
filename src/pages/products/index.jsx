@@ -1,11 +1,16 @@
 import { useRouter } from 'next/router'
+import Products from '../../components/products'
 
-const Products = () => {
+const ProductPage = () => {
   const { query } = useRouter()
 
   const page = parseInt(query.page)
 
-  return <div>{`products on page ${page}`}</div>
+  return (
+    <div>
+      <Products page={page} />
+    </div>
+  )
 }
 
-export default Products
+export default ProductPage
