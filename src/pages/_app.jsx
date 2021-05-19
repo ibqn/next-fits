@@ -10,7 +10,7 @@ import '../components/styles/nprogress.css'
 
 import theme from '../theme'
 
-import GlobalStyle from '../components/global-style'
+import GlobalStyles from '../components/global-styles'
 import Page from '../components/page'
 
 export default function App({ Component, pageProps }) {
@@ -33,7 +33,7 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
-      <GlobalStyle />
+      <GlobalStyles />
       <ApolloProvider client={client}>
         <ThemeProvider theme={theme}>
           <Page>
