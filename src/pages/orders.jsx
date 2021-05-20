@@ -1,9 +1,9 @@
 import Link from 'next/link'
 
-export default function Home() {
+export default function Orders() {
   return (
     <>
-      <h1>index</h1>
+      <h1>Orders</h1>
 
       <Link href="/sell">sell</Link>
     </>
