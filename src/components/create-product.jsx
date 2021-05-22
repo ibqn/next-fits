@@ -19,7 +19,7 @@ const CreateProduct = () => {
     <Formik
       initialValues={{
         name: 'New Product',
-        image: '',
+        image: null,
         price: 34642,
         description: '',
       }}

@@ -6,11 +6,7 @@ const ProductPage = () => {
 
   const page = parseInt(query.page)
 
-  return (
-    <div>
-      <Products page={page} />
-    </div>
-  )
+  return <Products page={page} />
 }
 
 export default ProductPage

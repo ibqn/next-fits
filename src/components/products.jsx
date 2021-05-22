@@ -33,7 +33,7 @@ const ProductsListStyles = styled.div`
 const Products = ({ page }) => {
   const { data, loading, error } = useQuery(GET_PRODUCTS)
 
-  if (loading) return <div>Loading...</div>
+  if (loading) return 'Loading...'
   if (error) return `Error! ${error.message}`
 
   return (

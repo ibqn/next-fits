@@ -1,9 +1,9 @@
-import Link from 'next/link'
-const Sell = () => (
+import CreateProduct from '../components/create-product'
+
+const SellPage = () => (
   <>
-    <h1>Sell</h1>
-    <Link href="/">home</Link>
+    <CreateProduct />
   </>
 )
 
-export default Sell
+export default SellPage
