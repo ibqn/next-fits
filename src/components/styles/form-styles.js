@@ -11,18 +11,22 @@ const loading = keyframes`
   }
 `
 
-const Form = styled.form`
-  box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.05);
-  background: rgba(0, 0, 0, 0.02);
-  border: 5px solid white;
-  padding: 20px;
-  font-size: 1.5rem;
-  line-height: 1.5;
-  font-weight: 600;
+const FormStyles = styled.div`
+  form {
+    box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.05);
+    background: rgba(0, 0, 0, 0.02);
+    border: 5px solid white;
+    padding: 20px;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    font-weight: 600;
+  }
+
   label {
     display: block;
     margin-bottom: 1rem;
   }
+
   input,
   textarea,
   select {
@@ -30,6 +34,7 @@ const Form = styled.form`
     padding: 0.5rem;
     font-size: 1rem;
     border: 1px solid black;
+
     &:focus {
       outline: 0;
       border-color: var(--red);
@@ -48,9 +53,11 @@ const Form = styled.form`
   fieldset {
     border: 0;
     padding: 0;
+
     &[disabled] {
       opacity: 0.5;
     }
+
     &::before {
       height: 10px;
       content: '';
@@ -62,6 +69,7 @@ const Form = styled.form`
         #ff3019 100%
       );
     }
+
     &[aria-busy='true']::before {
       background-size: 50% auto;
       animation: ${loading} 0.5s linear infinite;
@@ -69,4 +77,4 @@ const Form = styled.form`
   }
 `
 
-export default Form
+export default FormStyles

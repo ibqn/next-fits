@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
-import { Formik, Field, ErrorMessage } from 'formik'
+import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
-import FormStyles from './styles/form'
+import FormStyles from './styles/form-styles'
 
 const PictureInput = ({ form, field }) => (
   <input
@@ -29,16 +29,17 @@ const CreateProduct = () => {
           .required('An image file is required')
           .test('fileFormat', 'Image only', (value) => {
             console.log('file', value)
+            console.log('file type', value.type)
             return value && ['image/jpeg', 'image/png'].includes(value.type)
           }),
       })}
       onSubmit={(values) => console.log(values)}
     >
-      {() => (
-        <FormStyles>
+      <FormStyles>
+        <Form>
           <fieldset>
             <label htmlFor="image">
-              Product Name
+              Image
               <Field name="image" component={PictureInput} />
               <ErrorMessage name="image" />
             </label>
@@ -49,8 +50,8 @@ const CreateProduct = () => {
             </label>
             <button type="submit">+ Add Product</button>
           </fieldset>
-        </FormStyles>
-      )}
+        </Form>
+      </FormStyles>
     </Formik>
   )
 }
