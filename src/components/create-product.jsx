@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import { useFormik } from 'formik'
+import * as Yup from 'yup'
 import Form from './styles/form'
 
 const CreateProduct = () => {
@@ -13,6 +14,17 @@ const CreateProduct = () => {
     return errors
   }
 
+  const validationSchema = Yup.object({
+    name: Yup.string().required('Product name is required'),
+    image: Yup.mixed()
+      .required('An image file is required')
+      .test('fileFormat', 'Image only', (value) => {
+        console.log('file', value)
+        console.log('type', value.type)
+        return value && ['image/jpeg', 'image/png'].includes(value.type)
+      }),
+  })
+
   const formik = useFormik({
     initialValues: {
       name: 'New Product',
@@ -20,7 +32,7 @@ const CreateProduct = () => {
       price: 34642,
       description: '',
     },
-    validate,
+    validationSchema,
     onSubmit: (values) => {
       console.log(JSON.stringify(values, null, 2))
     },
@@ -31,29 +43,14 @@ const CreateProduct = () => {
       <fieldset>
         <label htmlFor="image">
           Image
-          <input
-            required
-            type="file"
-            id="image"
-            name="image"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.image}
-          />
+          <input type="file" id="image" {...formik.getFieldProps('image')} />
           {formik.touched.image && formik.errors.image ? (
             <div>{formik.errors.image}</div>
           ) : null}
         </label>
         <label htmlFor="name">
           Product Name
-          <input
-            id="name"
-            name="name"
-            type="text"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.name}
-          />
+          <input id="name" type="text" {...formik.getFieldProps('name')} />
           {formik.touched.name && formik.errors.name ? (
             <div>{formik.errors.name}</div>
           ) : null}
