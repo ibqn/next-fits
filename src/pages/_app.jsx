@@ -1,6 +1,6 @@
 import { ThemeProvider } from 'styled-components'
 import { ApolloProvider } from '@apollo/client'
-import { client } from '../apollo-client'
+import { useApollo } from '../apollo/client'
 
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
@@ -15,6 +15,7 @@ import Page from '../components/page'
 
 export default function App({ Component, pageProps }) {
   const router = useRouter()
+  const client = useApollo(pageProps.initialApolloState)
 
   useEffect(() => {
     const progressStart = () => NProgress.start()

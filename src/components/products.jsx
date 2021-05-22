@@ -3,6 +3,7 @@ import { gql, useQuery } from '@apollo/client'
 import styled from 'styled-components'
 
 import Product from './product'
+import { initializeApollo } from '../apollo/client'
 
 const GET_PRODUCTS = gql`
   query GetProducts {
@@ -32,7 +33,7 @@ const ProductsListStyles = styled.div`
 const Products = ({ page }) => {
   const { data, loading, error } = useQuery(GET_PRODUCTS)
 
-  if (loading) return 'Loading...'
+  if (loading) return <div>Loading...</div>
   if (error) return `Error! ${error.message}`
 
   return (
@@ -40,7 +41,7 @@ const Products = ({ page }) => {
       <div>products on {page}</div>
       <ProductsListStyles>
         {data?.products?.map((product) => (
-          <Product product={product} />
+          <Product key={product.id} product={product} />
         ))}
       </ProductsListStyles>
     </>
@@ -49,6 +50,20 @@ const Products = ({ page }) => {
 
 Products.propTypes = {
   page: PropTypes.number,
+}
+
+export async function getStaticProps() {
+  const apolloClient = initializeApollo()
+
+  await apolloClient.query({
+    query: GET_PRODUCTS,
+  })
+
+  return {
+    props: {
+      initialApolloState: apolloClient.cache.extract(),
+    },
+  }
 }
 
 export default Products
