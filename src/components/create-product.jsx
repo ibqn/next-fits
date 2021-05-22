@@ -29,7 +29,6 @@ const CreateProduct = () => {
           .required('An image file is required')
           .test('fileFormat', 'Image only', (value) => {
             console.log('file', value)
-            console.log('file type', value.type)
             return value && ['image/jpeg', 'image/png'].includes(value.type)
           }),
       })}
