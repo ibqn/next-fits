@@ -22,6 +22,10 @@ const FormStyles = styled.div`
     font-weight: 600;
   }
 
+  span {
+    color: var(--red);
+  }
+
   label {
     display: block;
     margin-bottom: 1rem;

@@ -31,6 +31,8 @@ const CreateProduct = () => {
             console.log('file', value)
             return value && ['image/jpeg', 'image/png'].includes(value.type)
           }),
+        price: Yup.number().required('Price is required').positive().integer(),
+        description: Yup.string(),
       })}
       onSubmit={(values) => console.log(values)}
     >
@@ -40,12 +42,22 @@ const CreateProduct = () => {
             <label htmlFor="image">
               Image
               <Field name="image" component={PictureInput} />
-              <ErrorMessage name="image" />
+              <ErrorMessage name="image" component="span" />
             </label>
             <label htmlFor="name">
               Product Name
               <Field name="name" />
               <ErrorMessage name="name" />
+            </label>
+            <label htmlFor="price">
+              Price
+              <Field name="price" />
+              <ErrorMessage name="price" component="span" />
+            </label>
+            <label htmlFor="description">
+              Description
+              <Field name="description" component="textarea" />
+              <ErrorMessage name="description" />
             </label>
             <button type="submit">+ Add Product</button>
           </fieldset>
