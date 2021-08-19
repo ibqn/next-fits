@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import Products from '../../components/products'
+import Products from 'components/products'
 
 const ProductPage = () => {
   const { query } = useRouter()
